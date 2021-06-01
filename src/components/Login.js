@@ -1,0 +1,36 @@
+import React, { Component } from 'react';
+
+const Login =(props)=>
+{
+const {email, setEmail, password, setPassword,handleLogin,handleSignUp,hasAccount,setHasAccount,emailError,passwordError } = props
+    return(
+        <section className="login">
+            <div className="loginContainer">
+                <label>Username</label>
+                <input type="text" autoFocus required value={email} onChange={e=> setEmail(e.target.value)}/>
+                <p className="errorMsg">{emailError} </p>
+                <label>Password</label>
+                <input type="password"  required value={password} onChange={e=> setPassword(e.target.value)}/>
+                <p className="errorMsg">{passwordError}</p>
+               <br></br>
+                <div ClassName="btnContainer">
+                    {hasAccount ? (<div>
+                    <button onClick={handleLogin}>Sign In</button>
+                    <p >       Dont Have an Account?  <span color="red" onClick={()=> setHasAccount(!hasAccount)}>Sign Up</span></p>
+                    </div>):(<>
+                    <button onClick={handleSignUp}>Sign Up</button>
+                    <p>       Have an account ? <span onClick={()=> setHasAccount(!hasAccount)}>Sign In</span></p>
+                    </>)}
+
+
+
+                </div>
+
+            </div>
+
+
+        </section>
+    )
+}
+
+export default Login
